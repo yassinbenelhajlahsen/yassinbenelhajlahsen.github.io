@@ -6,23 +6,23 @@
     <title>Yassin's Portfolio</title>
     <meta
       name="description"
-      content="Yassin Benelhajlahsen | Full-Stack Engineer, CS '26. Projects, experience, tech stack, education, and contact."
+      content="Yassin Benelhajlahsen | Software engineer at Associated Environmental Systems. Projects, experience, tech stack, education, and contact."
     />
     <link rel="canonical" href="https://yassinbenelhajlahsen.github.io" />
     <meta property="og:title" content="Yassin Benelhajlahsen" />
     <meta
       property="og:description"
-      content="Full-Stack Engineer | CS '26 | Projects, Experience, Tech, Education, Contact"
+      content="Software Engineer | Projects, Experience, Tech, Education, Contact"
     />
     <meta property="og:type" content="website" />
-    <meta name="theme-color" content="#000000" />
-    <meta name="color-scheme" content="dark light" />
+    <meta name="theme-color" content="#0b0c0b" />
+    <meta name="color-scheme" content="dark" />
 
-    <!-- Plus Jakarta Sans -->
+    <!-- Plus Jakarta Sans (prose) + IBM Plex Mono (labels, figures) -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
       rel="stylesheet"
     />
 
@@ -46,53 +46,6 @@
     </script>
   </head>
   <body>
-    <!-- Theme Toggle -->
-    <button
-      id="theme-toggle"
-      class="btn toggle-btn"
-      aria-label="Toggle dark/light mode"
-    >
-      <!-- Moon icon (shown in dark mode) -->
-      <svg
-        id="icon-moon"
-        viewBox="0 0 24 24"
-        width="20"
-        height="20"
-        fill="none"
-        stroke="currentColor"
-        stroke-width="2"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        aria-hidden="true"
-      >
-        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
-      </svg>
-      <!-- Sun icon (shown in light mode) -->
-      <svg
-        id="icon-sun"
-        viewBox="0 0 24 24"
-        width="20"
-        height="20"
-        fill="none"
-        stroke="currentColor"
-        stroke-width="2"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        aria-hidden="true"
-        style="display: none"
-      >
-        <circle cx="12" cy="12" r="5" />
-        <line x1="12" y1="1" x2="12" y2="3" />
-        <line x1="12" y1="21" x2="12" y2="23" />
-        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
-        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
-        <line x1="1" y1="12" x2="3" y2="12" />
-        <line x1="21" y1="12" x2="23" y2="12" />
-        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
-        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
-      </svg>
-    </button>
-
     <a class="skip-link" href="#main">Skip to content</a>
 
     <!-- Header -->
@@ -120,7 +73,7 @@
       <section class="hero">
         <h1>Yassin Benelhajlahsen</h1>
         <p class="subtitle">
-          I build full-stack apps. Currently a software engineer at Associated
+          Currently a software engineer at Associated
           Environmental Systems, shipping the calibration and certificate
           system its technicians run on.
         </p>
@@ -208,10 +161,7 @@
           </p>
 
           <div class="metrics-row">
-            <div class="metric">
-              <span class="metric-value">198</span>
-              <span class="metric-label">PRs merged to main</span>
-            </div>
+
             <div class="metric">
               <span class="metric-value">127</span>
               <span class="metric-label">Prisma models</span>
@@ -289,6 +239,21 @@
               Software Engineer Intern at Associated Environmental Systems
             </h4>
             <div class="when">June 2026 – Sept 2026</div>
+            <div class="metrics-row">
+
+              <div class="metric">
+                <span class="metric-value">34</span>
+                <span class="metric-label">write paths gated</span>
+              </div>
+              <div class="metric">
+                <span class="metric-value">6&nbsp;&rarr;&nbsp;1</span>
+                <span class="metric-label">pass/fail rollup</span>
+              </div>
+              <div class="metric">
+                <span class="metric-value">ISO 17025</span>
+                <span class="metric-label">certificate compliance</span>
+              </div>
+            </div>
             <ul>
               <li>
                 Built the field service report platform on Next.js server
@@ -1110,56 +1075,6 @@
         });
       });
 
-      // Theme toggle functionality
-      const themeToggle = document.getElementById("theme-toggle");
-      const iconMoon = document.getElementById("icon-moon");
-      const iconSun = document.getElementById("icon-sun");
-      const html = document.documentElement;
-      const body = document.body;
-      const themeColorMeta = document.querySelector('meta[name="theme-color"]');
-      const colorSchemeMeta = document.querySelector(
-        'meta[name="color-scheme"]',
-      );
-
-      function setTheme(isLight) {
-        const themeName = isLight ? "light" : "dark";
-        const themeColor = isLight ? "#ffffff" : "#000000";
-
-        html.classList.toggle("light-mode", isLight);
-        html.classList.toggle("dark-mode", !isLight);
-        html.style.colorScheme = themeName;
-        html.style.backgroundColor = themeColor;
-        body.style.backgroundColor = themeColor;
-
-        if (isLight) {
-          iconMoon.style.display = "none";
-          iconSun.style.display = "";
-        } else {
-          iconMoon.style.display = "";
-          iconSun.style.display = "none";
-        }
-
-        if (themeColorMeta) themeColorMeta.setAttribute("content", themeColor);
-        if (colorSchemeMeta)
-          colorSchemeMeta.setAttribute(
-            "content",
-            `${themeName} ${isLight ? "dark" : "light"}`,
-          );
-      }
-
-      // Load saved theme from localStorage
-      const savedTheme = localStorage.getItem("theme");
-      const systemPrefersLight = window.matchMedia(
-        "(prefers-color-scheme: light)",
-      ).matches;
-      setTheme(savedTheme ? savedTheme === "light" : systemPrefersLight);
-
-      // Toggle theme on click
-      themeToggle.addEventListener("click", () => {
-        const isLight = !html.classList.contains("light-mode");
-        setTheme(isLight);
-        localStorage.setItem("theme", isLight ? "light" : "dark");
-      });
     </script>
     <script src="scripts/stack-highlight.js"></script>
   </body>

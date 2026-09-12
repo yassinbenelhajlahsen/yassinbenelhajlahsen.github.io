@@ -1,74 +1,55 @@
-/* ── Custom Properties ── */
+/* ──────────────────────────────────────────────────────────────
+   Design tokens — single dark theme.
+   The palette is near-black with a faint green cast so the lime
+   accent reads as a signal rather than a decoration.
+   ────────────────────────────────────────────────────────────── */
 :root {
-  --bg: #000000;
-  --bg-elev: #1c1c1e;
-  --card: #1c1c1e;
-  --card-hover: #2c2c2e;
-  --text: #f5f5f7;
-  --text-secondary: #a1a1a6;
-  --muted: #86868b;
-  --border: rgba(255, 255, 255, 0.08);
-  --accent: #0071e3;
-  --accent-hover: #0077ed;
-  --accent-green: #30d158;
-  --shadow: 0 2px 20px rgba(0, 0, 0, 0.4);
-  --shadow-hover: 0 8px 40px rgba(0, 0, 0, 0.5);
-  --radius: 16px;
-  --ring: rgba(0, 113, 227, 0.35);
-}
+  /* Surfaces */
+  --bg: #0b0c0b;
+  --bg-elev: #121412;
+  --card: #101210;
+  --card-hover: #151815;
 
-@media (prefers-color-scheme: light) {
-  :root {
-    --bg: #ffffff;
-    --bg-elev: #f5f5f7;
-    --card: #ffffff;
-    --card-hover: #fafafa;
-    --text: #1d1d1f;
-    --text-secondary: #6e6e73;
-    --muted: #86868b;
-    --border: rgba(0, 0, 0, 0.06);
-    --accent: #0071e3;
-    --accent-hover: #0077ed;
-    --accent-green: #1a9e45;
-    --shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
-    --shadow-hover: 0 8px 30px rgba(0, 0, 0, 0.1);
-    --ring: rgba(0, 113, 227, 0.2);
-  }
-}
+  /* Ink — every value below is checked against --card for AA */
+  --text: #e9ebe7;
+  --text-secondary: #b4b9b1; /* 9.4:1 */
+  --muted: #8b908a; /* 5.8:1 — safe down to 12px */
 
-/* Light mode overrides (applied when .light-mode is on <html>) */
-.light-mode {
-  --bg: #ffffff;
-  --bg-elev: #f5f5f7;
-  --card: #ffffff;
-  --card-hover: #fafafa;
-  --text: #1d1d1f;
-  --text-secondary: #6e6e73;
-  --muted: #86868b;
-  --border: rgba(0, 0, 0, 0.06);
-  --accent: #0071e3;
-  --accent-hover: #0077ed;
-  --accent-green: #1a9e45;
-  --shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
-  --shadow-hover: 0 8px 30px rgba(0, 0, 0, 0.1);
-  --ring: rgba(0, 113, 227, 0.2);
-}
+  /* Structure */
+  --border: #242724;
+  --rule: #1c1f1c;
 
-.dark-mode {
-  --bg: #000000;
-  --bg-elev: #1c1c1e;
-  --card: #1c1c1e;
-  --card-hover: #2c2c2e;
-  --text: #f5f5f7;
-  --text-secondary: #a1a1a6;
-  --muted: #86868b;
-  --border: rgba(255, 255, 255, 0.08);
-  --accent: #0071e3;
-  --accent-hover: #0077ed;
-  --accent-green: #30d158;
-  --shadow: 0 2px 20px rgba(0, 0, 0, 0.4);
-  --shadow-hover: 0 8px 40px rgba(0, 0, 0, 0.5);
-  --ring: rgba(0, 113, 227, 0.35);
+  /* Signal */
+  --accent: #c2f04e;
+  --accent-hover: #d3f875;
+  --accent-ink: #0b0c0b; /* text placed on top of --accent */
+  --accent-wash: rgba(194, 240, 78, 0.1);
+  --accent-green: #7ddc8f;
+
+  /* Geometry */
+  --radius: 10px;
+  --radius-sm: 6px;
+
+  /* Spacing scale — 4px base */
+  --s1: 4px;
+  --s2: 8px;
+  --s3: 12px;
+  --s4: 16px;
+  --s5: 24px;
+  --s6: 32px;
+  --s7: 48px;
+  --s8: 72px;
+  --s9: 112px;
+
+  /* Type */
+  --font-sans:
+    'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Helvetica Neue',
+    Arial, sans-serif;
+  --font-mono:
+    'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+
+  /* The comfortable reading measure for body prose */
+  --measure: 68ch;
 }
 
 /* ── Reset & Globals ── */
@@ -76,15 +57,14 @@ html {
   scroll-behavior: smooth;
   background: var(--bg);
   color-scheme: dark;
-  transition: background 0.4s cubic-bezier(0.25, 0.1, 0.25, 1);
+  /* Keep anchor targets clear of the sticky header */
+  scroll-padding-top: 88px;
 }
 
-html.light-mode {
-  color-scheme: light;
-}
-
-html.dark-mode {
-  color-scheme: dark;
+@media (max-width: 768px) {
+  html {
+    scroll-padding-top: 150px;
+  }
 }
 
 * {
@@ -95,27 +75,24 @@ body {
   margin: 0;
   background: var(--bg);
   color: var(--text);
-  font-family:
-    'Plus Jakarta Sans',
-    -apple-system,
-    BlinkMacSystemFont,
-    'Helvetica Neue',
-    Arial,
-    'Apple Color Emoji',
-    'Segoe UI Emoji',
-    sans-serif;
+  font-family: var(--font-sans);
   line-height: 1.7;
   font-size: 16px;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  transition:
-    background 0.4s cubic-bezier(0.25, 0.1, 0.25, 1),
-    color 0.4s cubic-bezier(0.25, 0.1, 0.25, 1);
 }
 
 a {
   color: var(--accent);
   text-decoration: none;
+}
+
+/* A single visible focus treatment for every interactive element */
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: var(--radius-sm);
 }
 
 .container {
@@ -138,10 +115,10 @@ a {
   top: 1rem;
   width: auto;
   height: auto;
-  padding: 0.5rem 0.75rem;
+  padding: var(--s2) var(--s3);
   background: var(--bg-elev);
   border: 1px solid var(--border);
-  border-radius: 8px;
+  border-radius: var(--radius-sm);
   z-index: 100;
 }
 
@@ -151,36 +128,58 @@ a {
   font-size: 14px;
   font-weight: 500;
   margin-top: 0;
+  max-width: var(--measure);
+}
+
+/* Mono is the labelling voice: anything that annotates rather than
+   speaks gets it — section labels, badges, stats, dates, captions. */
+.mono {
+  font-family: var(--font-mono);
+  font-feature-settings: 'tnum' 1;
 }
 
 /* ── Sections ── */
 section {
-  padding: 96px 0;
+  padding: var(--s9) 0;
 }
 
 .section-label {
   display: block;
-  font-size: 13px;
-  font-weight: 700;
-  letter-spacing: 0.1em;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--accent);
-  margin-bottom: 12px;
+  margin-bottom: var(--s3);
 }
 
 .section-title {
   font-size: clamp(26px, 4vw, 36px);
-  font-weight: 700;
-  letter-spacing: -0.025em;
-  margin: 0 0 32px;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  margin: 0 0 var(--s6);
   color: var(--text);
   line-height: 1.1;
-  transition:
-    color 0.4s cubic-bezier(0.25, 0.1, 0.25, 1);
 }
 
-/* ── Print Styles ── */
+/* ── Print Styles ──
+   The screen theme is dark-only, so print inverts the whole page. */
 @media print {
+  :root {
+    --bg: #ffffff;
+    --bg-elev: #ffffff;
+    --card: #ffffff;
+    --card-hover: #ffffff;
+    --text: #000000;
+    --text-secondary: #1a1a1a;
+    --muted: #444444;
+    --border: #bbbbbb;
+    --rule: #dddddd;
+    --accent: #000000;
+    --accent-wash: transparent;
+  }
+
   header,
   .quicklinks,
   .cta-row,
@@ -189,19 +188,27 @@ section {
   .chip,
   .btn,
   .skip-link,
+  .demo-panel {
+    display: none;
+  }
+
   body {
     background: #ffffff;
-    color: #000;
+    color: #000000;
+  }
+
+  section {
+    padding: 24px 0;
   }
 
   .card,
   .card-featured {
-    border: 1px solid #bbb;
-    box-shadow: none;
+    border: 1px solid #bbbbbb;
+    background: #ffffff;
   }
 
   .metric-value {
-    color: #000;
+    color: #000000;
   }
 
   .metrics-row {
@@ -211,7 +218,7 @@ section {
   }
 
   a {
-    color: #000;
+    color: #000000;
     text-decoration: underline;
   }
 
