@@ -120,12 +120,13 @@
       <section class="hero">
         <h1>Yassin Benelhajlahsen</h1>
         <p class="subtitle">
-          I build full-stack apps. Currently shipping features used daily by
-          physicians at Soaper.
+          I build full-stack apps. Currently a software engineer at Associated
+          Environmental Systems, shipping the calibration and certificate
+          system its technicians run on.
         </p>
         <p class="subtitle-detail">
-          CS '26 &middot; Brooklyn College &middot; Open to new-grad
-          opportunities.
+          B.S. Computer Science &middot; Brooklyn College &middot; New York,
+          NY
         </p>
 
         <div class="cta-row">
@@ -192,56 +193,76 @@
         </div>
       </section>
 
-      <!-- Featured Work: SoaperNote -->
+      <!-- Featured Work: FSONE -->
       <section id="featured" aria-labelledby="featured-title">
         <span class="section-label">Featured Work</span>
         <h2 id="featured-title" class="section-title">Built in production.</h2>
         <article class="card card-featured reveal">
           <div class="featured-badge">Featured Project</div>
-          <h3>SoaperNote</h3>
+          <h3>FSONE</h3>
           <p class="meta">
-            HIPAA-aware clinical notes with AI transcription, voice-to-edit
-            flows, and dynamic SOAP templates, built as an intern at Soaper.
+            The field service platform Associated Environmental Systems runs on
+            &mdash; work orders, field service reports, and ISO/IEC 17025
+            calibration certificates for environmental test chambers. A single
+            Next.js 15 codebase over a 127-model PostgreSQL schema.
           </p>
 
           <div class="metrics-row">
             <div class="metric">
-              <span class="metric-value">AES-GCM-256</span>
-              <span class="metric-label">end-to-end encryption</span>
+              <span class="metric-value">198</span>
+              <span class="metric-label">PRs merged to main</span>
             </div>
             <div class="metric">
-              <span class="metric-value">5</span>
-              <span class="metric-label">Stripe webhook events</span>
+              <span class="metric-value">127</span>
+              <span class="metric-label">Prisma models</span>
             </div>
             <div class="metric">
-              <span class="metric-value">115+</span>
-              <span class="metric-label">pytest cases</span>
+              <span class="metric-value">92</span>
+              <span class="metric-label">RBAC-gated server actions</span>
+            </div>
+            <div class="metric">
+              <span class="metric-value">240+</span>
+              <span class="metric-label">calibration test files</span>
             </div>
           </div>
 
           <ul>
             <li>
-              Secured audio data end-to-end with AES-GCM-256 via the WebCrypto
-              API. Keys are non-extractable and bound to Firebase UID, so even a
-              storage breach exposes nothing.
+              Own the calibration system end to end: a multi-step wizard that
+              plans set points, captures as-found and as-left readings per
+              sensor position, and renders an accreditation-grade PDF
+              certificate carrying measurement-uncertainty budgets,
+              reference-standard traceability, and full revision history.
             </li>
             <li>
-              Wired Stripe subscriptions to 5 webhook events with usage-based
-              note quotas and a referral system, giving the product a real
-              billing layer from day one.
+              Built the conformity layer — collapsed six divergent pass/fail
+              implementations into one canonical verdict, froze every value a
+              released certificate must not drift, and refuse issuance when the
+              attested site address, calibration due date, or reference-standard
+              snapshot no longer matches the record.
             </li>
             <li>
-              Covered 115+ pytest cases across endpoints, Stripe integration,
-              auth flows, and edge cases using Firebase and Stripe mock
-              fixtures.
+              Closed the authorization gap: moved 34 unprotected calibration and
+              FSR write paths behind Zod-validated <code>defineAction</code>
+              wrappers, blocked technician self-approval on certificate release,
+              and added region scoping, confidential-company grants, and a user
+              access audit trail on top of a generated role &times; permission
+              matrix.
+            </li>
+            <li>
+              Retired a manual GoFormz workflow with native field service report
+              capture — server actions with jsPDF export, AI draft and rewrite
+              assists, a symptom&rarr;parts recommender, and a coordinator
+              review queue.
             </li>
           </ul>
           <p class="meta" style="margin-top: 16px">
-            React &middot; Typescript &middot; TailwindCSS &middot; FastAPI
-            &middot; Python &middot; Stripe &middot; OpenAI &middot; Firebase
+            Next.js 15 &middot; TypeScript &middot; React &middot; PostgreSQL
+            &middot; Prisma &middot; NextAuth &middot; Tailwind CSS &middot;
+            Vitest &middot; Playwright
           </p>
           <p class="meta" style="margin-top: 8px; opacity: 0.6">
-            Private repo &middot; Built at Soaper
+            Private repo &middot; Built at Associated Environmental Systems
           </p>
         </article>
       </section>
@@ -252,8 +273,49 @@
         <h2 id="experience-title" class="section-title">Where I've shipped.</h2>
         <div class="card reveal">
           <div class="role">
+            <h4>
+              Software Engineer at Associated Environmental Systems
+            </h4>
+            <div class="when">Sept 2026 – Present</div>
+
+            <p class="meta" style="margin-top: 12px">
+              Converted to full-time after the summer internship, continuing
+              on the same compliance platform for calibrating and servicing
+              environmental test chambers.
+            </p>
+          </div>
+          <div class="role">
+            <h4>
+              Software Engineer Intern at Associated Environmental Systems
+            </h4>
+            <div class="when">June 2026 – Sept 2026</div>
+            <ul>
+              <li>
+                Built the field service report platform on Next.js server
+                actions with jsPDF export, retiring a manual GoFormz workflow;
+                closed price-tampering and double-submit gaps found in security
+                review with race-reproducing tests.
+              </li>
+              <li>
+                Designed the calibration wizard and certificate generator —
+                set-point planning, per-position as-found/as-left capture,
+                measurement-uncertainty budgets linked to real reference
+                instruments, and revision/amendment semantics where approval and
+                release are distinct events.
+              </li>
+              <li>
+                Gated 34 unprotected calibration and FSR write paths behind
+                Zod-validated RBAC server actions and blocked self-approval on
+                certificate release; consolidated six divergent pass/fail
+                implementations into one canonical rollup, eliminating
+                certificates that printed FAIL for readings the UI showed as
+                passing.
+              </li>
+            </ul>
+          </div>
+          <div class="role">
             <h4>Software Engineer Intern at Soaper</h4>
-            <div class="when">June 2025 – Present</div>
+            <div class="when">June 2025 – June 2026</div>
 
             <div class="metrics-row">
               <div class="metric">
@@ -836,7 +898,7 @@
                 <span class="pill" data-tech="git">Git</span>
                 <span class="pill" data-tech="github">GitHub</span>
                 <span class="pill" data-tech="docker">Docker</span>
-                <span class="pill" data-tech="aws">AWS (EC3, S3)</span>
+                <span class="pill" data-tech="aws">AWS (EC2, S3)</span>
                 <span class="pill" data-tech="cicd">CI/CD Pipelines</span>
                 <span class="pill" data-tech="supabase">Supabase</span>
                 <span class="pill" data-tech="firebase">Firebase</span>
@@ -857,7 +919,7 @@
         <div class="card reveal">
           <div class="role">
             <h4>B.S. Computer Science at Brooklyn College (CUNY)</h4>
-            <div class="when">Expected May 2026 &middot; GPA 3.6 / 4.0</div>
+            <div class="when">June 2026 &middot; GPA 3.6 / 4.0</div>
             <p
               style="
                 margin-top: 12px;
