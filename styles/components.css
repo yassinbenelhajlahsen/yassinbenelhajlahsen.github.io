@@ -261,7 +261,6 @@ nav a.active::after {
   margin-bottom: var(--s3);
   font-size: 15px;
   line-height: 1.65;
-  max-width: var(--measure);
 }
 
 .card ul li::marker {
@@ -405,64 +404,6 @@ nav a.active::after {
   opacity: 0.75;
 }
 
-/* ── Demo toggle button ── */
-button.demo-toggle {
-  background: none;
-  border: none;
-  padding: 0;
-  cursor: pointer;
-  font-family: var(--font-mono);
-  display: inline-flex;
-  align-items: center;
-  gap: var(--s2);
-}
-
-button.demo-toggle::after {
-  content: none;
-}
-
-.demo-chevron {
-  transition: transform 0.25s cubic-bezier(0.25, 0.1, 0.25, 1);
-  flex-shrink: 0;
-}
-
-button.demo-toggle[aria-expanded='true'] .demo-chevron {
-  transform: rotate(180deg);
-}
-
-/* ── Demo panel ── */
-.demo-panel {
-  margin-top: var(--s4);
-}
-
-.demo-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-  gap: var(--s3);
-}
-
-.demo-item {
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  gap: var(--s2);
-}
-
-.demo-item img {
-  width: 100%;
-  border-radius: var(--radius-sm);
-  border: 1px solid var(--border);
-  display: block;
-}
-
-.demo-item figcaption {
-  font-family: var(--font-mono);
-  font-size: 11px;
-  color: var(--muted);
-  letter-spacing: 0.04em;
-  text-align: center;
-}
-
 #topLink::after {
   content: '↑';
 }
@@ -512,7 +453,6 @@ button.demo-toggle[aria-expanded='true'] .demo-chevron {
   margin-bottom: var(--s3);
   font-size: 15px;
   line-height: 1.65;
-  max-width: var(--measure);
 }
 
 .role ul li::marker {
@@ -649,7 +589,6 @@ button.demo-toggle[aria-expanded='true'] .demo-chevron {
 /* ── Projects more link ── */
 .projects-more {
   margin-top: var(--s5);
-  max-width: none;
 }
 
 /* ── Tech stack card ── */

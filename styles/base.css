@@ -47,9 +47,6 @@
     Arial, sans-serif;
   --font-mono:
     'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-
-  /* The comfortable reading measure for body prose */
-  --measure: 68ch;
 }
 
 /* ── Reset & Globals ── */
@@ -128,7 +125,6 @@ button:focus-visible {
   font-size: 14px;
   font-weight: 500;
   margin-top: 0;
-  max-width: var(--measure);
 }
 
 /* Mono is the labelling voice: anything that annotates rather than
@@ -187,8 +183,7 @@ section {
   .action,
   .chip,
   .btn,
-  .skip-link,
-  .demo-panel {
+  .skip-link {
     display: none;
   }
 
